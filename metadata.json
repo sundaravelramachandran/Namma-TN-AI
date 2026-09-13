@@ -1,0 +1,6 @@
+{
+  "name": "Namma TN AI",
+  "description": "Tamil Nadu citizen-services AI assistant simplifying government schemes and certificates in Tamil, English, and Tanglish with verified guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

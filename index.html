@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      (function() {
+        try {
+          var originalFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : null;
+          var currentFetch = originalFetch;
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                configurable: true,
+                enumerable: true,
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val;
+                }
+              });
+            } catch (e) {
+              // Ignore prototype redefine error if restricted
+            }
+          }
+
+          if (typeof window !== 'undefined') {
+            try {
+              Object.defineProperty(window, 'fetch', {
+                configurable: true,
+                enumerable: true,
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val;
+                }
+              });
+            } catch (e) {
+              // Fallback
+            }
+          }
+        } catch (err) {
+          console.warn('Fetch setter initialization:', err);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namma TN AI - Tamil Nadu Government Services, Simplified</title>
+    <meta name="description" content="Tamil Nadu citizen-services AI assistant simplifying government schemes, welfare programs, and certificates in Tamil, English, and Tanglish with verified guidance." />
+    <meta property="og:title" content="Namma TN AI - Tamil Nadu Government Services, Simplified" />
+    <meta property="og:description" content="Tamil Nadu citizen-services AI assistant simplifying government schemes, welfare programs, and certificates in Tamil, English, and Tanglish with verified guidance." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
